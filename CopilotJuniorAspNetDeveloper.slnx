@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CopilotJuniorAspNetDeveloper.Application/CopilotJuniorAspNetDeveloper.Application.csproj" />
+    <Project Path="src/CopilotJuniorAspNetDeveloper.Domain/CopilotJuniorAspNetDeveloper.Domain.csproj" />
+    <Project Path="src/CopilotJuniorAspNetDeveloper.Infrastructure/CopilotJuniorAspNetDeveloper.Infrastructure.csproj" />
+    <Project Path="src/CopilotJuniorAspNetDeveloper.Web/CopilotJuniorAspNetDeveloper.Web.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/CopilotJuniorAspNetDeveloper.Domain.Tests/CopilotJuniorAspNetDeveloper.Domain.Tests.csproj" Id="fbd96fcb-807d-4932-84d4-2d7d9a10c9b8" />
+  </Folder>
+</Solution>

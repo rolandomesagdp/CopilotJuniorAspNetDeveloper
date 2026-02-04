@@ -10,7 +10,8 @@ builder.Services.AddDbContext<CopilotJuniorAspNetDeveloperDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IPersonsRepository, PersonsRepository>();
-builder.Services.AddScoped<RetreiveAllPersonsHandler>();
+builder.Services.AddScoped<RetrieveAllPersonsHandler>();
+builder.Services.AddScoped<RetrievePersonByIdHandler>();
 
 builder.Services.AddControllers();
 

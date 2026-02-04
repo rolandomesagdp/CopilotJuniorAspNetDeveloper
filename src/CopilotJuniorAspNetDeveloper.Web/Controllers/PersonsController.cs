@@ -7,18 +7,46 @@ namespace CopilotJuniorAspNetDeveloper.Api.Controllers
     [Route("[controller]")]
     public class PersonsController : ControllerBase
     {
-        private readonly RetreiveAllPersonsHandler retrievePersonsHandler;
+        private readonly RetrieveAllPersonsHandler retrievePersonsHandler;
+        private readonly RetrievePersonByIdHandler retrievePersonByIdHandler;
 
-        public PersonsController(RetreiveAllPersonsHandler retrievePersonsHandler)
+        public PersonsController(RetrieveAllPersonsHandler retrievePersonsHandler,
+            RetrievePersonByIdHandler retrievePersonByIdHandler)
         {
             this.retrievePersonsHandler = retrievePersonsHandler;
+            this.retrievePersonByIdHandler = retrievePersonByIdHandler;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var persons = await retrievePersonsHandler.GetPeopleAsync();
-            return Ok(persons);
+            try
+            {
+                var persons = await retrievePersonsHandler.GetPersonsAsync();
+                return Ok(persons);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            try
+            {
+                var person = await retrievePersonByIdHandler.GetPersonByIdAsync(id);
+                if (person == null)
+                {
+                    return NotFound();
+                }
+                return Ok(person);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
     }
 }

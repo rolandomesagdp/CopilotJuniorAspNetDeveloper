@@ -9,5 +9,7 @@ namespace CopilotJuniorAspNetDeveloper.Application.Persons
         /// </summary>
         /// <returns>Returns all available persons in the system.</returns>
         public Task<IEnumerable<Person>> GetAll();
+
+        public Task<Person> GetByIdAsync(int id);
     }
 }

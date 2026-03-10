@@ -13,12 +13,11 @@
         {
             var person = await personsRepository.GetByIdAsync(id);
 
-            return person == null ? null : new PersonDto
-            {
-                Id = person.Id,
-                Name = person.Name,
-                LastName = person.LastName
-            };
+            PersonDto personToReturn = null;
+            if (personToReturn != null)
+                personToReturn = new PersonDto { Id = person.Id, Name = person.Name, LastName = person.LastName };
+
+            return personToReturn;
         }
     }
 }

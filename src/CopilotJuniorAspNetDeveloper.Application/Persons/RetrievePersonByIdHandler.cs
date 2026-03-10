@@ -9,10 +9,15 @@
             this.personsRepository = personsRepository;
         }
         
-        public async Task<PersonDto> GetPersonByIdAsync(int id)
+        public async Task<PersonDto?> GetPersonByIdAsync(int id)
         {
             var person = await personsRepository.GetByIdAsync(id);
-            
+
+            if (person == null)
+            {
+                return null;
+            }
+
             return new PersonDto
             {
                 Id = person.Id,

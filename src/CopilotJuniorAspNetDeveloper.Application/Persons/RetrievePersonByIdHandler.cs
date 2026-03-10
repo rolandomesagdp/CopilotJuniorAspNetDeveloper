@@ -9,16 +9,22 @@
             this.personsRepository = personsRepository;
         }
         
-        public async Task<PersonDto> GetPersonByIdAsync(int id)
+        public async Task<PersonDto?> GetPersonByIdAsync(int id)
         {
             var person = await personsRepository.GetByIdAsync(id);
-            
-            return new PersonDto
+
+            PersonDto? personToReturn = null;
+            if (person != null)
             {
-                Id = person.Id,
-                Name = person.Name,
-                LastName = person.LastName
-            };
+                personToReturn = new PersonDto
+                {
+                    Id = person.Id,
+                    Name = person.Name,
+                    LastName = person.LastName
+                };
+            }
+
+            return personToReturn;
         }
     }
 }

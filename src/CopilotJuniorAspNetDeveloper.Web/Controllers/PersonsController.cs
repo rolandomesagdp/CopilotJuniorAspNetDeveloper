@@ -20,33 +20,40 @@ namespace CopilotJuniorAspNetDeveloper.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
+            IActionResult result;
             try
             {
                 var persons = await retrievePersonsHandler.GetPersonsAsync();
-                return Ok(persons);
+                result = Ok(persons);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                result = StatusCode(500, $"Internal server error: {ex.Message}");
             }
+            return result;
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
+            IActionResult result;
             try
             {
                 var person = await retrievePersonByIdHandler.GetPersonByIdAsync(id);
                 if (person == null)
                 {
-                    return NotFound();
+                    result = NotFound();
                 }
-                return Ok(person);
+                else
+                {
+                    result = Ok(person);
+                }
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                result = StatusCode(500, $"Internal server error: {ex.Message}");
             }
+            return result;
         }
     }
 }

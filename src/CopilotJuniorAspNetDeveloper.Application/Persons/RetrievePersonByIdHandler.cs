@@ -13,9 +13,16 @@
         {
             var person = await personsRepository.GetByIdAsync(id);
 
-            PersonDto personToReturn = null;
-            if (personToReturn != null)
-                personToReturn = new PersonDto { Id = person.Id, Name = person.Name, LastName = person.LastName };
+            PersonDto? personToReturn = PersonDto.NullPerson;
+            if (person != null)
+            {
+                personToReturn = new PersonDto
+                {
+                    Id = person.Id,
+                    Name = person.Name,
+                    LastName = person.LastName
+                };
+            }
 
             return personToReturn;
         }

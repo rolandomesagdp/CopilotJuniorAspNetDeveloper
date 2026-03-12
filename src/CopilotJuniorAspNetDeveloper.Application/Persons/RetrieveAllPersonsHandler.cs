@@ -12,12 +12,18 @@
         public async Task<IEnumerable<PersonDto>> GetPersonsAsync()
         {
             var allPersons = await personsRepository.GetAll();
-            return allPersons.Select(person => new PersonDto
+            var personDtos = new List<PersonDto>();
+            foreach (var person in allPersons)
             {
-                Id = person.Id,
-                Name = person.Name,
-                LastName = person.LastName
-            });
+                var personDto = new PersonDto
+                {
+                    Id = person.Id,
+                    Name = person.Name,
+                    LastName = person.LastName
+                };
+                personDtos.Add(personDto);
+            }
+            return personDtos;
         }
     }
 }

@@ -20,10 +20,10 @@ namespace CopilotJuniorAspNetDeveloper.Infrastructure.Persons
             return persons;
         }
 
-        public async Task<Person> GetByIdAsync(int id)
+        public async Task<Person?> GetByIdAsync(int id)
         {
-            var persons = await dbContext.Persons.FirstOrDefaultAsync(x => x.Id == id);
-            return persons;
+            var person = await dbContext.Persons.FirstOrDefaultAsync(x => x.Id == id);
+            return person;
         }
     }
 }

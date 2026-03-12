@@ -8,6 +8,12 @@
 
         public string LastName { get; set; }
 
-        public string FullName => $"{Name} {LastName}";
+        public string FullName
+        {
+            get
+            {
+                return $"{Name} {LastName}";
+            }
+        }
     }
 }

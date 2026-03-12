@@ -8,12 +8,8 @@
 
         public string LastName { get; set; }
 
-        public string FullName
-        {
-            get
-            {
-                return $"{Name} {LastName}";
-            }
-        }
+        public string FullName => $"{Name} {LastName}";
+
+        public static PersonDto? NullPerson { get; } = null;
     }
 }

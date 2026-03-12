@@ -13,7 +13,7 @@
         {
             var person = await personsRepository.GetByIdAsync(id);
 
-            PersonDto? personToReturn = null;
+            PersonDto? personToReturn = PersonDto.NullPerson;
             if (person != null)
             {
                 personToReturn = new PersonDto
